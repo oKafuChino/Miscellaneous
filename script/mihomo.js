@@ -55,7 +55,7 @@ function main(config) {
     geoip: 'https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geoip.dat',
     geosite: 'https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geosite.dat',
     mmdb: 'https://cdn.jsdelivr.net/gh/Loyalsoldier/geoip@release/Country.mmdb',
-    asn: 'https://cdn.jsdelivr.net/gh/Loyalsoldier/geoip@release/GeoLite2-ASN.mmdb'
+    asn: 'https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/GeoLite2-ASN.mmdb'
   };
 
   // 6. 覆盖 嗅探器 (Sniffer) 配置
@@ -191,7 +191,7 @@ function main(config) {
     'DOMAIN-SUFFIX,rbxcdn.com,Roblox',
     'DOMAIN-SUFFIX,rbx.com,Roblox',
     'DOMAIN-SUFFIX,roblox.cn,Roblox',
-    'IP-ASN,22697,Roblox',
+    'IP-ASN,22697,Roblox,no-resolve',
     'RULE-SET,SogouInput,搜狗输入法',
     'DOMAIN-SUFFIX,truthsocial.com,Truth Social',
     'RULE-SET,StaticResources,静态资源',
