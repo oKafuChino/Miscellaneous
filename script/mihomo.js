@@ -9,32 +9,36 @@ function main(config) {
     return matched.length > 0 ? matched : ['DIRECT']; 
   };
 
+  const regionNodes = (names, codes) => filterNodes(
+    new RegExp(`${names}|(?:^|[\\s\\-_|()[\\]{}【】])(?:${codes})(?=$|[\\s\\-_|()[\\]{}【】])`, 'i')
+  );
+
   // 3. 针对各个国家/地区策略组进行智能动态匹配 (融合了你原本配置中的特殊并组逻辑)
-  const hkNodes = filterNodes(/香港|HK|Hong.*Kong|🇭🇰/i);
-  const twNodes = filterNodes(/台湾|TW|Taiwan|🇹🇼/i);
-  const sgNodes = filterNodes(/新加坡|SG|Singapore|🇸🇬/i);
-  const jpNodes = filterNodes(/日本|JP|Japan|🇯🇵/i);
-  const usNodes = filterNodes(/美国|US|United.*States|🇺🇸/i);
-  const ukNodes = filterNodes(/英国|UK|United.*Kingdom|🇬🇧/i);
-  const deNodes = filterNodes(/德国|DE|Germany|🇩🇪/i);
-  const frNodes = filterNodes(/法国|FR|France|🇫🇷|法属/i);
-  const moNodes = filterNodes(/澳门|MO|Macao|🇲🇴/i);
-  const phNodes = filterNodes(/菲律宾|PH|Philippines|🇵🇭/i);
-  const myNodes = filterNodes(/马来西亚|MY|Malaysia|🇲🇾/i);
-  const thNodes = filterNodes(/泰国|TH|Thailand|🇹🇭/i);
-  const auNodes = filterNodes(/澳大利亚|澳洲|AU|Australia|🇦🇺/i);
-  const krNodes = filterNodes(/韩国|KR|Korea|🇰🇷/i);
-  const caNodes = filterNodes(/加拿大|CA|Canada|🇨🇦/i);
-  const arNodes = filterNodes(/阿根廷|AR|Argentina|🇦🇷/i);
-  const fiNodes = filterNodes(/芬兰|FI|Finland|🇫🇮/i);
-  const trNodes = filterNodes(/土耳其|TR|Turkey|🇹🇷/i);
-  const uaNodes = filterNodes(/乌克兰|UA|Ukraine|🇺🇦/i);
-  const egNodes = filterNodes(/埃及|EG|Egypt|🇪🇬/i);
+  const hkNodes = regionNodes('香港|Hong.*Kong|🇭🇰', 'HK');
+  const twNodes = regionNodes('台湾|Taiwan|🇹🇼', 'TW');
+  const sgNodes = regionNodes('新加坡|Singapore|🇸🇬', 'SG');
+  const jpNodes = regionNodes('日本|Japan|🇯🇵', 'JP');
+  const usNodes = regionNodes('美国|United.*States|🇺🇸', 'US');
+  const ukNodes = regionNodes('英国|United.*Kingdom|🇬🇧', 'UK');
+  const deNodes = regionNodes('德国|Germany|🇩🇪', 'DE');
+  const frNodes = regionNodes('法国|France|🇫🇷|法属', 'FR');
+  const moNodes = regionNodes('澳门|Macao|🇲🇴', 'MO');
+  const phNodes = regionNodes('菲律宾|Philippines|🇵🇭', 'PH');
+  const myNodes = regionNodes('马来西亚|Malaysia|🇲🇾', 'MY');
+  const thNodes = regionNodes('泰国|Thailand|🇹🇭', 'TH');
+  const auNodes = regionNodes('澳大利亚|澳洲|Australia|🇦🇺', 'AU');
+  const krNodes = regionNodes('韩国|Korea|🇰🇷', 'KR');
+  const caNodes = regionNodes('加拿大|Canada|🇨🇦', 'CA');
+  const arNodes = regionNodes('阿根廷|Argentina|🇦🇷', 'AR');
+  const fiNodes = regionNodes('芬兰|Finland|🇫🇮', 'FI');
+  const trNodes = regionNodes('土耳其|Turkey|🇹🇷', 'TR');
+  const uaNodes = regionNodes('乌克兰|Ukraine|🇺🇦', 'UA');
+  const egNodes = regionNodes('埃及|Egypt|🇪🇬', 'EG');
   
   // 按照你原本的配置：印度节点组里包含了印度和印度尼西亚
-  const inNodes = filterNodes(/印度|IN|India|🇮🇳|印尼|Indonesia|ID|🇮🇩/i);
+  const inNodes = regionNodes('印度|India|🇮🇳|印尼|Indonesia|🇮🇩', 'IN|ID');
   // 按照你原本的配置：俄罗斯节点组里包含了俄罗斯和埃塞俄比亚
-  const ruNodes = filterNodes(/俄罗斯|RU|Russia|🇷🇺|埃塞俄比亚|Ethiopia|🇪🇹/i);
+  const ruNodes = regionNodes('俄罗斯|Russia|🇷🇺|埃塞俄比亚|Ethiopia|🇪🇹', 'RU');
 
   // 4. 定义通用的区域策略组列表
   const regions = [
@@ -177,7 +181,7 @@ function main(config) {
 
   // 10. 覆盖 路由规则 (Rules)
   config['rules'] = [
-    'AND,((DST-PORT,443),(NETWORK,UDP)),REJECT',
+    'DST-PORT,22,SSH',
     'RULE-SET,ADBlock,广告拦截',
     'RULE-SET,AdditionalFilter,广告拦截',
     'DOMAIN-SUFFIX,nodeseek.com,Nodeseek',
@@ -185,7 +189,9 @@ function main(config) {
     'DOMAIN-KEYWORD,nodeseek,Nodeseek',
     'DOMAIN-SUFFIX,roblox.com,Roblox',
     'DOMAIN-SUFFIX,rbxcdn.com,Roblox',
+    'DOMAIN-SUFFIX,rbx.com,Roblox',
     'DOMAIN-SUFFIX,roblox.cn,Roblox',
+    'IP-ASN,22697,Roblox',
     'RULE-SET,SogouInput,搜狗输入法',
     'DOMAIN-SUFFIX,truthsocial.com,Truth Social',
     'RULE-SET,StaticResources,静态资源',
@@ -218,7 +224,6 @@ function main(config) {
     'GEOIP,TELEGRAM,Telegram,no-resolve',
     'GEOIP,CN,直连',
     'GEOIP,PRIVATE,直连',
-    'DST-PORT,22,SSH',
     'MATCH,选择代理'
   ];
 
