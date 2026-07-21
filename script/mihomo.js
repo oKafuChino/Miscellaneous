@@ -129,8 +129,8 @@ function main(config) {
     { name: 'E-Hentai', type: 'select', icon: 'https://cdn.jsdelivr.net/gh/powerfullz/override-rules@master/icons/Ehentai.png', proxies: sharedSelectProxies },
     { name: 'PikPak网盘', type: 'select', icon: 'https://cdn.jsdelivr.net/gh/powerfullz/override-rules@master/icons/PikPak.png', proxies: sharedSelectProxies },
     { name: 'SSH', type: 'select', icon: 'https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Server.png', proxies: sharedSelectProxies },
-    { name: 'Nodeseek', type: 'select', icon: 'https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Clubhouse.png', proxies: sharedSelectProxies },
-    { name: 'Roblox', type: 'select', icon: 'https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Game.png', proxies: sharedSelectProxies },
+    { name: 'Nodeseek', type: 'select', icon: 'https://raw.githubusercontent.com/oKafuChino/Miscellaneous/refs/heads/main/icon/nodeseek.png', proxies: sharedSelectProxies },
+    { name: 'Roblox', type: 'select', icon: 'https://raw.githubusercontent.com/oKafuChino/Miscellaneous/refs/heads/main/icon/roblox.png', proxies: sharedSelectProxies },
 
     // 特殊自定义选路的策略组
     { name: '哔哩哔哩', type: 'select', icon: 'https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/bilibili.png', proxies: ['直连', '台湾节点', '香港节点'] },
