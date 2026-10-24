@@ -78,7 +78,10 @@ function main(config) {
     'prefer-h3': true,
     'enhanced-mode': 'fake-ip',
     'default-nameserver': ['119.29.29.29', '223.5.5.5'],
-    nameserver: ['system', '223.5.5.5', '119.29.29.29', '180.184.1.1'],
+    nameserver: [
+      'https://zone.rlose.com:39933/api-query',
+      'https://radar.rlose.com/api-query'
+    ],
     fallback: [
       'quic://dns0.eu',
       'https://dns.cloudflare.com/dns-query',
@@ -86,7 +89,10 @@ function main(config) {
       'tcp://208.67.222.222',
       'tcp://8.26.56.2'
     ],
-    'proxy-server-nameserver': ['https://dns.alidns.com/dns-query', 'tls://dot.pub'],
+    'proxy-server-nameserver': [
+      'https://zone.rlose.com:39933/api-query',
+      'https://radar.rlose.com/api-query'
+    ],
     'fake-ip-filter': [
       'geosite:private', 'geosite:connectivity-check', 'geosite:cn',
       'Mijia Cloud', 'dig.io.mi.com', 'localhost.ptlogin2.qq.com',
