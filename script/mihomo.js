@@ -181,7 +181,7 @@ function main(config) {
     { name: '埃及节点', type: 'url-test', url: 'https://cp.cloudflare.com/generate_204', interval: 60, tolerance: 20, icon: 'https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Egypt.png', proxies: egNodes },
 
     // 带有 include-all 的 GLOBAL 组
-    { name: 'GLOBAL', type: 'select', icon: 'https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Global.png', 'include-all': true, proxies: ['选择代理', '手动选择', '静态资源', 'AI服务', '加密货币', '苹果服务', '谷歌服务', '微软服务', '哔哩哔哩', '巴哈姆特', 'Youtube', 'Netflix', 'TikTok', 'Spotify', 'Telegram', 'Twitter', '新浪微博', 'Truth Social', 'E-Hentai', 'PikPak网盘', '搜狗输入法', 'SSH', 'Nodeseek', 'Roblox', '自动选择', '故障转移', '直连', '广告拦截', ...regions] }
+    { name: 'GLOBAL', type: 'select', icon: 'https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Global.png', 'include-all': true, proxies: ['选择代理', '手动选择', '静态资源', 'AI服务', '加密货币', '苹果服务', '谷歌服务', '微软服务', '哔哩哔哩', '巴哈姆特', 'Youtube', 'Netflix', 'TikTok', 'Spotify', 'Telegram', 'Twitter', '新浪微博', 'Truth Social', 'E-Hentai', 'PikPak网盘', '搜狗输入法', 'SSH', 'Nodeseek', '自动选择', '故障转移', '直连', '广告拦截', ...regions] }
   ];
 
   // 10. 覆盖 路由规则 (Rules)
